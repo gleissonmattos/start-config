@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Start
 sudo apt-get update
 
@@ -6,6 +8,14 @@ sudo apt install curl -y
 
 echo 'INSTALL snap'
 sudo apt install snapd -y
+
+echo 'INSTALL brew'
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin/:$PATH"' >>~/.bashrc
+echo 'export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"' >>~/.bashrc
+echo 'export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"' >>~/.bashrc
+source  ~/.bashrc
+brew --version
 
 echo 'INSTALL vim'
 sudo apt install vim -y
@@ -76,10 +86,13 @@ code --install-extension foxundermoon.shell-format
 code --install-extension waderyan.gitblame
 code --install-extension yzhang.markdown-all-in-one
 code --install-extension eamodio.gitlens
+code --install-extension vscode-icons-team.vscode-icons
+code --install-extension coenraads.bracket-pair-colorizer-2
 
 # Developer
 echo 'INSTALL nvm' 
 sh -c "$(curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash)"
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
 
 export NVM_DIR="$HOME/.nvm" && (
 git clone https://github.com/creationix/nvm.git "$NVM_DIR"
@@ -103,6 +116,10 @@ npm install -g typescript
 echo 'INSTALL nodemon'
 npm install -g nodemon
 
+echo 'INSTALL deno'
+curl -fsSL https://deno.land/x/install/install.sh | sudo DENO_INSTALL=/usr/local sh
+deno --version
+
 echo 'INSTALL docker' 
 sudo apt-get remove docker docker-engine docker.io
 sudo apt install docker.io -y
@@ -122,6 +139,9 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s http
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 kubectl version --client
+
+echo 'INSTALL helm'
+sudo snap install helm --classic
 
 echo 'INSTALL aws-cli' 
 sudo apt-get install awscli -y
