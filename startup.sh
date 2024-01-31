@@ -162,8 +162,33 @@ echo 'INSTALL fzf'
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
 
-echo 'INSTALL JetBrains datagrip'
-sudo snap install datagrip --classic
+install_datagrip() {
+    echo 'Installing JetBrains Datagrip...'
+    sudo snap install datagrip --classic
+    echo 'Datagrip installed successfully!'
+}
+
+install_dbeaver() {
+    echo 'Installing DBeaver...'
+    sudo snap install dbeaver-ce
+    echo 'DBeaver installed successfully!'
+}
+
+select_database_client() {
+    PS3="Select a database client to install (type the corresponding number and press Enter): "
+    options=("JetBrains Datagrip" "DBeaver" "Install manually later")
+
+    select choice in "${options[@]}"; do
+        case $REPLY in
+            1) install_datagrip; break ;;
+            2) install_dbeaver; break ;;
+            3) echo 'You chose to install manually later.'; break ;;
+            *) echo 'Invalid option. Please try again.' ;;
+        esac
+    done
+}
+
+select_database_client
 
 echo 'INSTALL spotify' 
 curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
