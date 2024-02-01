@@ -85,7 +85,7 @@ sudo apt-get update
 sudo apt-get install terminator -y
 
 # VsCode
-echo 'INSTALL code'
+echo 'INSTALL vscode'
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
@@ -93,15 +93,36 @@ sudo apt-get install apt-transport-https -y
 sudo apt-get update
 sudo apt-get install code -y # or code-insiders
 
-echo 'INSTALL extensions'
-code --install-extension christian-kohler.path-intellisense
-code --install-extension ashpowell.monokai-one-dark-vivid
-code --install-extension foxundermoon.shell-format
-code --install-extension waderyan.gitblame
-code --install-extension yzhang.markdown-all-in-one
-code --install-extension eamodio.gitlens
-code --install-extension vscode-icons-team.vscode-icons
-code --install-extension coenraads.bracket-pair-colorizer-2
+echo 'CONFIGURE vscode'
+
+install_fira_code() {
+    echo 'Installing Fira Code...'
+    sudo apt install fonts-firacode
+    echo 'Fira Code installed successfully!'
+}
+
+configure_vscode() {
+    code --install-extension christian-kohler.path-intellisense
+    code --install-extension ashpowell.monokai-one-dark-vivid
+    code --install-extension foxundermoon.shell-format
+    code --install-extension waderyan.gitblame
+    code --install-extension yzhang.markdown-all-in-one
+    code --install-extension eamodio.gitlens
+    code --install-extension vscode-icons-team.vscode-icons
+    code --install-extension coenraads.bracket-pair-colorizer-2
+
+    install_fira_code
+
+    settings_file="$HOME/.config/Code/User/settings.json"
+    mkdir -p "$(dirname $settings_file)"
+    echo '{
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true
+}' > "$settings_file"
+    echo 'vscode is configured!'
+}
+
+configure_vscode
 
 # Developer
 echo 'INSTALL nvm' 
