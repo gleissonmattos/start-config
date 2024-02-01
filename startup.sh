@@ -50,6 +50,21 @@ ssh-keygen -t rsa -b 4096 -C $git_config_user_email
 ssh-add ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub
 
+echo -e "\nYour SSH Key has been generated successfully."
+echo "Now, you need to add the SSH key to your remote services."
+echo "1. Copy the SSH key below:"
+echo "----------------------------------------"
+cat ~/.ssh/id_rsa.pub
+echo "----------------------------------------"
+echo "2. Visit the SSH key settings on your remote service:"
+echo "   - For GitHub: https://github.com/settings/keys"
+echo "   - For GitLab: https://gitlab.com/-/profile/keys"
+echo "   - For Bitbucket: https://bitbucket.org/account/settings/ssh-keys/"
+echo "3. Add a new SSH key and paste the copied key."
+echo "4. Once added, press ENTER to continue with the rest of the setup."
+
+read -p "Press ENTER to continue..."
+
 # Terminal configurations
 echo 'INSTALL zsh'
 sudo apt-get install zsh -y
