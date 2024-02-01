@@ -22,10 +22,12 @@ chmod +x ./startup.sh && ./startup.sh
   - [Git Blame](https://marketplace.visualstudio.com/items?itemName=waderyan.gitblame) - See git blame information in the status bar.
   - [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one).
   - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) - Visualize code authorship at a glance via Git blame annotations and code lens.
+  - [Fira Code](https://github.com/tonsky/FiraCode) - Free monospaced font with programming ligatures
 - [NVM](https://github.com/nvm-sh/nvm) - Node version manager.
 - [Node JS](https://nodejs.org/en/).
 - [Typescript](https://www.typescriptlang.org/).
 - [Nodemon](https://nodemon.io/)
+- API test with [Insomnia](https://insomnia.rest/) or [Postman](https://www.postman.com/) selection.
 - [Docker](https://www.docker.com/) - Docker is an open source platform for creating isolated environments via container.
   - [Docker Compose](https://docs.docker.com/compose/) - 
 Docker Compose is a tool for creating and executing multiple application containers.
@@ -34,5 +36,6 @@ Docker Compose is a tool for creating and executing multiple application contain
 - [Slack](https://slack.com/intl/pt-br/) - Slack is a proprietary commercial communication platform.
 - [Chrome Browser](https://www.google.com/intl/pt-BR/chrome/)
 - [fzf](https://github.com/junegunn/fzf) - General command-line finder.
-- [DataGrip](https://www.jetbrains.com/pt-br/datagrip/) - Database IDE.
+- Database IDE: [DataGrip](https://www.jetbrains.com/pt-br/datagrip/) or select [Dbeaver Community](https://dbeaver.io/).
 - [Spotify](https://www.spotify.com/br/) - Streaming music, podcast and video service.
+- [Pritunl](https://client.pritunl.com/) - VPN client
