@@ -123,10 +123,6 @@ npm install -g typescript
 echo 'INSTALL nodemon'
 npm install -g nodemon
 
-echo 'INSTALL deno'
-curl -fsSL https://deno.land/x/install/install.sh | sudo DENO_INSTALL=/usr/local sh
-deno --version
-
 echo 'INSTALL docker' 
 sudo apt-get remove docker docker-engine docker.io
 sudo apt install docker.io -y
