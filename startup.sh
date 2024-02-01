@@ -164,6 +164,34 @@ curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64
 sudo dpkg -i session-manager-plugin.deb
 session-manager-plugin --version
 
+install_insomnia() {
+    echo 'Installing Insomnia...'
+    sudo snap install insomnia
+    echo 'Insomnia installed successfully!'
+}
+
+install_postman() {
+    echo 'Installing Postman...'
+    sudo snap install postman
+    echo 'Postman installed successfully!'
+}
+
+select_api_tool() {
+    PS3="Select API testing tool to install (type the corresponding number and press Enter): "
+    options=("Insomnia" "Postman" "Install manually later")
+
+    select choice in "${options[@]}"; do
+        case $REPLY in
+            1) install_insomnia; break ;;
+            2) install_postman; break ;;
+            3) echo 'You chose to install manually later.'; break ;;
+            *) echo 'Invalid option. Please try again.' ;;
+        esac
+    done
+}
+
+select_api_tool
+
 # Tools
 echo 'INSTALL slack' 
 sudo snap install slack --classic
