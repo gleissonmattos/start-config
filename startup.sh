@@ -109,7 +109,6 @@ configure_vscode() {
     code --install-extension yzhang.markdown-all-in-one
     code --install-extension eamodio.gitlens
     code --install-extension vscode-icons-team.vscode-icons
-    code --install-extension coenraads.bracket-pair-colorizer-2
 
     install_fira_code
 
@@ -117,7 +116,9 @@ configure_vscode() {
     mkdir -p "$(dirname $settings_file)"
     echo '{
     "editor.fontFamily": "Fira Code",
-    "editor.fontLigatures": true
+    "editor.fontLigatures": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active"
 }' > "$settings_file"
     echo 'vscode is configured!'
 }
